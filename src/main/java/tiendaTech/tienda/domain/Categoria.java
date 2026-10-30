@@ -1,10 +1,10 @@
-
 package tiendaTech.tienda.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
 import lombok.*;
 
 @Getter
@@ -32,4 +32,9 @@ public class Categoria implements Serializable {
 
     @Column(nullable = false)
     private boolean activo = true;
+
+    // Relación de uno a muchos con la clase Producto
+// Sin "cascade" ni "orphanRemoval" para evitar la propagación de operaciones.
+    @OneToMany(mappedBy = "categoria")
+    private List<Producto> productos;
 }
