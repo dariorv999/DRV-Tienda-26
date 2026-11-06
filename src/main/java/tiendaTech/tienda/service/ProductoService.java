@@ -1,6 +1,5 @@
 package tiendaTech.tienda.service;
 
-
 import tiendaTech.tienda.domain.Producto;
 import tiendaTech.tienda.repository.ProductoRepository;
 import java.io.IOException;
@@ -79,7 +78,13 @@ public class ProductoService {
 
     @Transactional(readOnly = true)
     public List<Producto> consultaSQL(double precioInf, double precioSup) {
-        return productoRepository.consultaJPQL(precioInf, precioSup);
+        return productoRepository.consultaSQL(precioInf, precioSup);
+    }
+
+    //Practica #2: consulta ampliada
+    @Transactional(readOnly = true)
+    public List<Producto> consultaAmpliada(double precioInf, double precioSup, int existencias) {
+        return productoRepository.consultaAmpliada(precioInf, precioSup, existencias);
     }
 
 }

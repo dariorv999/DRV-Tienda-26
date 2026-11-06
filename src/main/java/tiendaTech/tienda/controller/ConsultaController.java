@@ -56,4 +56,17 @@ public class ConsultaController {
         return "/consultas/listado";
     }
 
+    //Practica #2: consulta ampliada
+    @PostMapping("/consultaAmpliada")
+    public String consultaAmpliada(@RequestParam() double precioInf,
+            @RequestParam() double precioSup,
+            @RequestParam() int existencias, Model model) {
+        var lista = productoService.consultaAmpliada(precioInf, precioSup, existencias);
+        model.addAttribute("productos", lista);
+        model.addAttribute("precioInf", precioInf);
+        model.addAttribute("precioSup", precioSup);
+        model.addAttribute("existencias", existencias);
+        return "/consultas/listado";
+    }
+
 }
